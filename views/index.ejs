@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies List</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+  <div class="container">
+    <h1>Movies List Api</h1>  
+    <a id="newPostBtn" href="/new">New Movie ►</a>
+    <ul id="postsList">
+      <% movies.forEach(movie=> { %>
+        <li>
+          <h2>
+            <%=movie.title%>
+          </h2>
+          <h4>
+            <%=movie.director%>
+          </h4>
+          <h4>
+            <%=movie.year%>
+          </h4>
+          <a class="edit" href="/edit/<%= movie.id %>">Edit</a>
+          <a class="delete" href="/api/movies/delete/<%= movie.id %>">Delete</a>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+</body>
+</html>

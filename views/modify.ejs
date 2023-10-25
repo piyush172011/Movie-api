@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Movie</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>
+      <%= heading %>
+    </h1>
+    <a id="backBtn" href="/">◄ Back</a>
+    <% if (locals.movie) { %>
+      <form id="editForm" method="post" action="/api/movies/<%=movie.id%>">
+        <input type="text" name="title" value="<%=movie.title %>">
+        <input type="text" name="director" value="<%=movie.director %>">
+        <input type="text" name="year" value="<%=movie.year %>">
+        <button class="full-width" type="submit">
+          <%= submit %>
+        </button>
+      </form>
+      <% } else {%>
+        <form id="newPostForm" method="post" action="/api/movies">
+          <input type="text" name="title" placeholder="Enter new Title" required>
+          <input type="text" name="director" placeholder="Director" required>
+          <input type="number" name="year" placeholder="Year" min="1000" max="9999" required>
+          <button class="full-width" type="submit">
+            <%= submit %>
+          </button>
+        </form>
+        <% } %>
+
+  </div>
+</body>
+
+</html>
